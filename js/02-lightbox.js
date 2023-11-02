@@ -1,0 +1,32 @@
+import { galleryItems } from './gallery-items.js';
+// Change code below this line
+const gallery = document.querySelector('.gallery');
+
+function picTemplate(pic) {
+    const { preview, original, description} = pic;
+  
+    return `
+  <li class="gallery__item">
+  <a class="gallery__link" href="${original}">
+    <img
+      class="gallery__image"
+      src="${preview}"
+      alt="${description}"
+    />
+  </a>
+</li>`;
+  }
+
+  function picsTemplate(picsArr) {
+    return picsArr.map(picTemplate).join('');
+  }
+
+  function renderPics(PicsArr) {
+    const markup = picsTemplate(PicsArr);
+    gallery.innerHTML = markup;;
+  }
+  
+  renderPics(galleryItems);
+console.log(galleryItems);
+
+var lightbox = new SimpleLightbox('.gallery a', {captionSelector: self, captionDelay: 250});
