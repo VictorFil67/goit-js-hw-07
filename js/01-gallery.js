@@ -2,6 +2,7 @@ import { galleryItems } from './gallery-items.js';
 
 // Change code below this line
 const gallery = document.querySelector('.gallery');
+let instance;
 
 function picTemplate(pic) {
     const { preview, original, description} = pic;
@@ -40,8 +41,24 @@ if (e.target.nodeName !== 'IMG') {
 }
 const originalPath = e.target.dataset.source;
 
-basicLightbox.create(`
+instance = basicLightbox.create(`
 		<img width="1400" height="900" src="${originalPath}">
-	`).show()
+	`, {
+    onShow: () => {
+      document.addEventListener('keydown', onBasicLightboxElKeydown);
+    },
+onClose: () => {
+  document.removeEventListener('keydown', onBasicLightboxElKeydown);
+}
+    
+  });
+  instance.show();
+}
 
+function onBasicLightboxElKeydown(e) {
+if (e.code !== 'Escape') {
+  return
+}
+instance.close();
+console.log(1111);
 }
