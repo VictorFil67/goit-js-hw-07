@@ -29,4 +29,4 @@ function picTemplate(pic) {
   renderPics(galleryItems);
 console.log(galleryItems);
 
-var lightbox = new SimpleLightbox('.gallery a', {captionSelector: 'img', captionType: 'attr', captionsData: 'alt', captionPosition: 'bottom', captionDelay: 250});
+let lightbox = new SimpleLightbox('.gallery a', {captionSelector: 'img', captionType: 'attr', captionsData: 'alt', captionPosition: 'bottom', captionDelay: 250});
